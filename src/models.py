@@ -3,6 +3,9 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 class User(db.Model):
+
+    __tablename__ = 'user'
+
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
@@ -19,6 +22,9 @@ class User(db.Model):
         }
 
 class People(db.Model):
+
+    __tablename__ = 'people'
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), unique=True, nullable=False)
     gender = db.Column(db.String(120), unique=False, nullable=True)
@@ -37,6 +43,9 @@ class People(db.Model):
         }
 
 class Fav_people(db.Model):
+
+    __tablename__ = 'fav_people'
+
     id =db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     people_id = db.Column(db.Integer, db.ForeignKey('people.id'))
@@ -56,6 +65,9 @@ class Fav_people(db.Model):
 
 
 class Planets(db.Model):
+
+    __tablename__ = 'planets'
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), unique=True, nullable=False)
     population = db.Column(db.String(120), unique=False, nullable=True)
@@ -74,6 +86,9 @@ class Planets(db.Model):
         }
 
 class Fav_planets(db.Model):
+
+    __tablename__ = 'fav_planets'
+
     id =db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     planet_id = db.Column(db.Integer, db.ForeignKey('planets.id'))
